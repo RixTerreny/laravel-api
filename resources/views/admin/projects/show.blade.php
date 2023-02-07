@@ -9,6 +9,7 @@
             <th>Description</th>
             <th>Cover_img</th>
             <th>Github</th>
+            <td>linguaggi</td>
             <th></th>
         </thead>
         <tbody>
@@ -17,6 +18,13 @@
                     <td>{{Str::limit( $project->description,50)}}</td>
                     <td><img src="{{asset('storage/'. $project->cover_img)}}" alt=""></td>
                     <td><a href="{{$project->github_link}}">Visualizza la Repository</a></td>
+                    <td>
+                        <ul>
+                            @foreach ($project->types as $types  )
+                            <li>{{$types->type}}</li>
+                            @endforeach
+                        </ul>
+                    </td>
                     <td>
                         <a href="{{route("admin.projects.edit",$project->id)}}">&#9998;</a> 
                     </td>

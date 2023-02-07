@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("user_id");
             $table->string('name');
             $table->text('description');
             $table->string("cover_img")->nullable();

@@ -27,6 +27,17 @@
             <input type="text" class="form-control" name="github_link" value="{{$project->github_link}}">
         </div>
 
+        <div class="mb-3">
+            <lable class="form-lable">Linguaggio</lable>
+            <select name="{{$project->type}}">
+                @foreach ( $project->types as $type)
+                    @if (!$type->project_id)
+                        <option value="">{{$type->type}}</option>
+                    @endif
+                @endforeach
+            </select>
+        </div>
+
         
         <button type="submit" class="btn btn-primary">Modifica</button>
     </form>
