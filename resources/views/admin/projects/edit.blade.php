@@ -28,12 +28,21 @@
         </div>
 
         <div class="mb-3">
-            <lable class="form-lable">Linguaggio</lable>
-            <select name="{{$project->type}}">
+            <div>Linguaggi attuali</div>
+            <div>
+                <ul>
+                    @foreach ($project->types as $types  )
+                    <li>{{$types->type}}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @foreach ( $project->types as $type)
+                {{$type->project_id = null}}
+            @endforeach
+            <lable class="form-lable">Cambia linguaggi</lable>
+            <select value="" name="type">
                 @foreach ( $project->types as $type)
-                    @if (!$type->project_id)
-                        <option value="">{{$type->type}}</option>
-                    @endif
+                        <option value="{{$type->project_id = $project->id}}">{{$type->type}}</option>
                 @endforeach
             </select>
         </div>
