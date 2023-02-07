@@ -75,6 +75,7 @@ class ProjectsController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+        dd($data);
         $img_path =Storage::put('uploads',$data['cover_img']);
         $project = Project::FindOrFail($id);
 
@@ -82,6 +83,7 @@ class ProjectsController extends Controller
         $project->description = $data['description'];
         $project->cover_img = $img_path;
         $project->github_link = $data['github_link'];
+        $project->types->type = $data['type'];
         $project->save();
 
         return redirect()->route('admin.projects.show', $project->id);
